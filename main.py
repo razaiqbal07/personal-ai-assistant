@@ -9,7 +9,9 @@ while True:
         You are a tool router working with the following tools:
         
         - youtube
-            :for reuqets that involve playing music or videos
+            :for requests that involve playing music or videos
+        - knowledge
+            :for requests that involve user asking for some information that could be fetched from the web
 
         Your task is to identify if the user is asking for access to the above mentioned tools.
 
@@ -26,6 +28,8 @@ while True:
         }}
 
         Here is the user request: {user_input}
+
+        IMPORTANT: DO NOT SEND ANYTHING ELSE OTHER THAN THE VALID JSON MENTIONED ABOVE.
     """
 
     response = ask(prompt)
@@ -33,4 +37,5 @@ while True:
 
     command = json.loads(response)
     tool = Tools[command["tool"]]
-    tool.run(command["input"])
+    output = tool.run(command["input"])
+    print(output)
