@@ -1,6 +1,6 @@
 import json
 from llm.ollama import ask
-from tools.youtube import YoutubeTool
+from tools.registry import Tools
 
 while True:
     user_input = input("Hey! What are you looking for today?")
@@ -8,7 +8,7 @@ while True:
     prompt = f"""
         You are a tool router working with the following tools:
         
-        - Youtube
+        - youtube
             :for reuqets that involve playing music or videos
 
         Your task is to identify if the user is asking for access to the above mentioned tools.
@@ -21,7 +21,7 @@ while True:
 
         Example Input: Play me good life from fast and furious
         Example Output: {{
-            tool: Youtube,
+            tool: youtube,
             input: moon river by andy williams
         }}
 
@@ -32,6 +32,5 @@ while True:
     print(response)
 
     command = json.loads(response)
-    if command['tool'] == 'Youtube':
-        y = YoutubeTool()
-        y.run(command['input'])
+    tool = Tools[command["tool"]]
+    tool.run(command["input"])
