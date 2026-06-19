@@ -1,9 +1,15 @@
 import json
 from llm.ollama import ask
 from tools.registry import Tools
+from speech.record import record_audio
+from speech.transcribe import transcribe
+
 
 while True:
-    user_input = input("Hey! What are you looking for today?")
+    # user_input = input("Hey! What are you looking for today?")
+    audio_file = record_audio()
+
+    user_input = transcribe(audio_file)
 
     prompt = f"""
         You are a tool router working with the following tools:
