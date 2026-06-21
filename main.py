@@ -22,8 +22,11 @@ while True:
     command = json.loads(response)
     tool = Tools[command["tool"]]
     output = tool.run(command["input"])
-
-    speech_response=ask(speech_prompt(output[0]['summary']))
-    print(speech_response)
-    # print(output[0]['summary'])
-    speak(output[0]['summary'])
+    match command["tool"]:
+        case "knowledge":
+            speech_response = ask(speech_prompt(output[0]["summary"]))
+            print(speech_response)
+            speak(output[0]["summary"])
+            break
+        case "youtube":
+            Tools["youtube"].run(command["message"])
