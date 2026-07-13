@@ -1,3 +1,6 @@
 class File:
-    def run():
-        print("reading the mentioned file")
+    def run(self):
+        with open("example.txt", "r") as file:
+            content = file.read()
+            return content
+            print(content)

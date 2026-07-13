@@ -7,6 +7,7 @@ from speech.transcribe import transcribe
 from speech.speak import speak
 from llm.prompts.tool_identifier import tool_identifier_prompt
 from llm.prompts.speech import speech_prompt
+from llm.prompts.file import file_content_prompt
 
 while True:
     user_input = input("Hey! What are you looking for today?")
@@ -32,3 +33,7 @@ while True:
             break
         case "youtube":
             Tools["youtube"].run(command["message"])
+        case "file_management":
+            user_input = input("What do you want to know about the file?")
+            response = ask(file_content_prompt(output, user_input))
+            print(response)
