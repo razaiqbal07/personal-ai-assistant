@@ -1,7 +1,5 @@
 from pathlib import Path
 
-filename = "report.pdf"
-
 locations = [
     Path.home() / "Downloads",
     Path.home() / "Documents",
