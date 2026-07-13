@@ -7,7 +7,7 @@ def tool_identifier_prompt(user_input:str):
         - knowledge
             :for requests that involve user asking for some information that could be fetched from the web
         - file_management
-            :for requests that involve reading file content
+            :for requests that involve reading file content. For this type, the 'input' key in the output should be file name
 
         Your task is to identify if the user is asking for access to the above mentioned tools.
 
