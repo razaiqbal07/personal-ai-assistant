@@ -9,10 +9,12 @@ from llm.prompts.tool_identifier import tool_identifier_prompt
 from llm.prompts.speech import speech_prompt
 
 while True:
-    # user_input = input("Hey! What are you looking for today?")
-    audio_file = record_audio()
+    user_input = input("Hey! What are you looking for today?")
 
-    user_input = transcribe(audio_file)
+    # Uncomment for audio input
+    # audio_file = record_audio()
+    # user_input = transcribe(audio_file)
+    # Uncomment for audio input
 
     prompt = tool_identifier_prompt(user_input)
 

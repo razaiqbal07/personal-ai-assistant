@@ -6,6 +6,8 @@ def tool_identifier_prompt(user_input:str):
             :for requests that involve playing music or videos
         - knowledge
             :for requests that involve user asking for some information that could be fetched from the web
+        - file_management
+            :for requests that involve reading file content
 
         Your task is to identify if the user is asking for access to the above mentioned tools.
 
