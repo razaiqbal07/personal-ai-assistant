@@ -2,8 +2,8 @@ import json
 from llm.ollama import ask
 
 from tools.registry import Tools
-from speech.record import record_audio
-from speech.transcribe import transcribe
+# from speech.record import record_audio
+# from speech.transcribe import transcribe
 from speech.speak import speak
 from llm.prompts.tool_identifier import tool_identifier_prompt
 from llm.prompts.speech import speech_prompt
@@ -11,7 +11,10 @@ from llm.prompts.file import file_content_prompt
 
 while True:
     user_input = input("Hey! What are you looking for today?")
-
+    print(user_input)
+    if user_input == 'exit':
+        print("Bye!")
+        break;
     # Uncomment for audio input
     # audio_file = record_audio()
     # user_input = transcribe(audio_file)
